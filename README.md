@@ -1,6 +1,6 @@
 # Auth Project
 
-This is a project under construction.
+This is an Authentication and Authorization application. This project is under construction.
 
 ## Ambient preparation
 - Create a error.log empty file inside /config/dev/logs
