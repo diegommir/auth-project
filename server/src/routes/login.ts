@@ -28,12 +28,10 @@ router.post('/login', (req, res) => {
             httpOnly: true
         })
 
-        return res.sendStatus(200)
+        return res.sendStatus(204)
     } else {
         throw new IncorrectCredentialsError('Usuário ou senha incorretos.')
     }
-
-    res.sendStatus(401)
 })
 
 export { router as loginRoute }

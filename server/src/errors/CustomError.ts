@@ -1,9 +1,9 @@
 export default class CustomError extends Error {
     code: number
 
-    constructor(message: string) {
+    constructor(message: string, code = 500) {
         super(message)
 
-        this.code = 500
+        this.code = code
     }
 }
