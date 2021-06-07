@@ -19,7 +19,7 @@ Optional. If not set, default is 3000.
 ## Building and Running in Development
 - Go to /config/dev
 - To build: docker compose build
-- To Run: docker compose up -d --remove-orphans
+- To Run: docker compose up --remove-orphans -d
 - To Stop: docker compose down
 
 ## Building and Running in Production
