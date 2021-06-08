@@ -23,7 +23,7 @@ const Login = () => {
     return (
         <div className="text-center">
             <form className="form-signin">
-                <img className="mb-3" />
+                <img className="mb-3" alt="" />
                 <h3 className="mb-3">Login</h3>
                 <input type="email" id="email" name="email" className="form-control" 
                     onChange={e => setEmail(e.target.value)} value={email} required placeholder="Enter your Email" />

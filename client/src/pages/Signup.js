@@ -2,6 +2,7 @@ import '../css/Signup.css'
 import { useState } from 'react'
 import axios from 'axios'
 import preventDefaultHandler from '../utils/preventDefaultHandler'
+import RenderErrors from '../components/RenderErrors'
 
 const Signup = () => {
     const [ email, setEmail ] = useState('')
@@ -22,8 +23,8 @@ const Signup = () => {
             errorList.push('Password and confirmation must be the same')
         }
 
-        setErrors(errorList)
         if (errorList.length > 0) {
+            setErrors(errorList)
             return
         }
 
@@ -34,21 +35,21 @@ const Signup = () => {
             })
             console.log(response)
         } catch(error) {
-            console.log(error)
+            if (error.response.data.errors) {
+                error.response.data.errors.forEach(err => {
+                    errorList.push(err.msg)
+                })
+            }
         }
-    }
 
-    const renderError = error => {
-        return (<li>{error}</li>)
+        setErrors(errorList)
     }
 
     return (
         <div className="text-center">
-            <div id="errors">
-                {errors.map(renderError)}
-            </div>
+            <RenderErrors errors={errors} />
             <form className="form-signin" onSubmit={preventDefaultHandler}>
-                <img className="mb-3" />
+                <img className="mb-3" alt="" />
                 <h3 className="mb-3">Sign Up</h3>
                 <input type="email" id="email" name="email" className="form-control" 
                     onChange={e => setEmail(e.target.value)} value={email} required placeholder="Enter your Email" />
