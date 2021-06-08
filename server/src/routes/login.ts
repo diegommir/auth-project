@@ -2,15 +2,15 @@ import Router from 'express'
 import crypto from 'crypto'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
-import IncorrectCredentials from '../errors/IncorrectCredentialsError'
 import IncorrectCredentialsError from '../errors/IncorrectCredentialsError'
+import Password from '../utils/Password'
 
 const router = Router()
 
 router.post('/login', (req, res) => {
     //Is coming from db
     const email = 'test@test.com'
-    const password = bcrypt.hashSync('pass', 10)
+    const password = Password.hashPassword('pass')
     const key = crypto.randomBytes(64).toString('base64')
 
     if (req.body.email === email && bcrypt.compareSync(req.body.password, password)) {
