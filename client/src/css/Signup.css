@@ -5,15 +5,31 @@ body {
 
 form {
     width: 100%;
-    max-width: 300px;
+    max-width: 400px;
     margin: 0 auto;
 }
 
 form .form-control:focus {
-    z-index: 2;
+    z-index: 0;
+}
+
+form #given_name {
+    border-top-right-radius: 0;
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+form #family_name {
+    border-top-left-radius: 0;
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 form #email {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     margin-bottom: -1px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
