@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
 
 userSchema.pre('save', function(done) {
     if (this.isModified('password')) {
-        this.set('password', Password.hashPassword(this.get('password')))
+        this.set('password', Password.encrypt(this.get('password')))
     }
     done()
 })

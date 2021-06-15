@@ -4,7 +4,7 @@ import CustomError from './errors/CustomError'
 import MissingEnvVariablesError from './errors/MissingEnvVariablesError'
 import NotFoundError from './errors/NotFoundError'
 import { signupRoute } from './routes/signup'
-import { loginRoute } from './routes/login'
+import { signinRoute } from './routes/signin'
 
 //Pure javascript to import .env file content to process.env
 require('dotenv').config()
@@ -21,7 +21,7 @@ app.use(app_path + '/', express.static('public'))
 
 //Path to the app API
 app.use(app_path + '/api/', signupRoute)
-app.use(app_path + '/api/', loginRoute)
+app.use(app_path + '/api/', signinRoute)
 
 app.all('*', () => {
     throw new NotFoundError()

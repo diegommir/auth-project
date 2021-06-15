@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { body, validationResult } from 'express-validator'
+import CustomError from "../errors/CustomError";
 import ValidationError from "../errors/ValidationError";
 import User from "../models/User";
 
@@ -20,6 +21,9 @@ router.post(
         const family_name = req.body.family_name
         const email = req.body.email
         const password = req.body.password
+
+        const existingUser = await User.findOne({ email })
+        if (existingUser) throw new CustomError('This email is already in use.')
 
         const user = new User({
             given_name, family_name, email, password

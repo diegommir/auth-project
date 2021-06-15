@@ -12,7 +12,7 @@ const RenderErrors = ({ errors }) => {
 
     const renderError = error => {
         return (
-            <div key={error}>{error}</div>
+            <div key={error}><i className="bi bi-x-octagon"></i> {error}</div>
         )
     }
 
